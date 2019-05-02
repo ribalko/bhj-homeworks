@@ -6,7 +6,7 @@ for (let i = 0; i < sizeElements.length; i++) {
     sizeElements[i].addEventListener('click',
         function() {
             
-            // Зададим размер шрифта
+            // Обнулим размер шрифта
             if (bookElement.classList.contains('book_fs-small')) {
                 bookElement.classList.remove('book_fs-small');
             }
@@ -14,6 +14,7 @@ for (let i = 0; i < sizeElements.length; i++) {
                 bookElement.classList.remove('book_fs-big');
             }
 
+            // Зададим размер шрифта            
             if (event.target.hasAttribute('data-size')) {
                 bookElement.classList.add('book_fs-' + event.target.dataset.size);
             }
