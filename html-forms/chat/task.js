@@ -3,7 +3,7 @@ const chatBage = document.querySelector( '.chat-widget' );
 
 const aiBase = ['Добрый день, мы ещё не проснулись. Позвоните через 10 лет','Мы не будем ва м ничего продавать!','Добрый день! До свидания!','К Сожалению, все операторы сейчас заняты. Не пишите нам больше!','Где ваша совесть?','Вас плохо слышно! Пшшш пшшш.'];
 
-let options = {
+const options = {
     hour: 'numeric',
     minute: 'numeric',
     second: 'numeric'
@@ -34,8 +34,8 @@ function botMsg() {
 
 
 function sendMsg(e) {
-    let tb = document.getElementById("chat-widget__input");
-    if ((e.keyCode == 13) && (tb.value != '')) {
+    const tb = document.getElementById("chat-widget__input");
+    if ((e.keyCode === 13) && (tb.value != '')) {
         let curDate = new Date();
         curDate = curDate.toLocaleString("ru", options);
         messages.innerHTML += `
