@@ -1,27 +1,33 @@
-const checkboxes = document.querySelectorAll('.interest__check');
+const checkboxes = document.querySelectorAll('.interest');
 
 for (let i = 0; i < checkboxes.length; i++) {
     checkboxes[i].addEventListener('change',
     function() {
-        let parentUl = event.target.closest('ul');
-        if (parentUl.closest('li') != null) {
-            let parentCheckbox = parentUl.closest('li').querySelector('.interest__check');;
-            if (parentCheckbox != null) {
-                let childCheckboxes = parentUl.querySelectorAll('.interest__check');
-                let checkedChilds = parentUl.querySelectorAll('.interest__check:checked');
-                console.log(checkedChilds.length === childCheckboxes.length);            
+        let parentLi = event.currentTarget;
+        let parentCheckbox = parentLi.querySelector('.interest__check');
+        let childCheckboxes = parentLi.querySelectorAll('.interest__check');
+        if (event.target === parentCheckbox) {
+            for (let j = 0; j < childCheckboxes.length; j++) {
+                childCheckboxes[j].checked = parentCheckbox.checked;                
+            }
+        }
+        // Вложенные списки
+        else { 
+            let checkedChilds = event.target.closest('ul').querySelectorAll('.interest__check:checked');    
+            console.log(checkedChilds);
                 if (checkedChilds.length === 0) {
                     parentCheckbox.checked = false;
                     parentCheckbox.indeterminate = false;                        
                 }
-                else if  (checkedChilds.length === childCheckboxes.length) {
+                else if  (checkedChilds.length === childCheckboxes.length - 1) {
                     parentCheckbox.checked = true;  
                     parentCheckbox.indeterminate = false;                                  
                 }
                 else {
                     parentCheckbox.indeterminate = true;
                 }
-            }
+
         }
+   
     });
 }
