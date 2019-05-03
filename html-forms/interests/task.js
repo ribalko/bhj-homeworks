@@ -6,6 +6,7 @@ for (let i = 0; i < checkboxes.length; i++) {
         let parentLi = event.currentTarget;
         let parentCheckbox = parentLi.querySelector('.interest__check');
         let childCheckboxes = parentLi.querySelectorAll('.interest__check');
+            
         if (event.target === parentCheckbox) {
             for (let j = 0; j < childCheckboxes.length; j++) {
                 childCheckboxes[j].checked = parentCheckbox.checked;                
@@ -14,20 +15,17 @@ for (let i = 0; i < checkboxes.length; i++) {
         // Вложенные списки
         else { 
             let checkedChilds = event.target.closest('ul').querySelectorAll('.interest__check:checked');    
-            console.log(checkedChilds);
-                if (checkedChilds.length === 0) {
-                    parentCheckbox.checked = false;
-                    parentCheckbox.indeterminate = false;                        
-                }
-                else if  (checkedChilds.length === childCheckboxes.length - 1) {
-                    parentCheckbox.checked = true;  
-                    parentCheckbox.indeterminate = false;                                  
-                }
-                else {
-                    parentCheckbox.indeterminate = true;
-                }
-
+            if (checkedChilds.length === 0) {
+                parentCheckbox.checked = false;
+                parentCheckbox.indeterminate = false;                        
+            }
+            else if  (checkedChilds.length === childCheckboxes.length - 1) {
+                parentCheckbox.checked = true;  
+                parentCheckbox.indeterminate = false;                                  
+            }
+            else {
+                parentCheckbox.indeterminate = true;
+            }
         }
-   
     });
 }
