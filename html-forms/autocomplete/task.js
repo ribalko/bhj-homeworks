@@ -83,22 +83,22 @@ class Autocomplete {
     */
 
     const inputOptions = this.input.options;
-    let matchedOptions = [];
+    let matchedOptions = [];    
 
-    function checkOptions() {
-      matchedOptions = [];
+    function checkOptions(matchedOptions) {
       for(let i = 0; i < inputOptions.length; i++) {
         if (inputOptions[i].text.includes(text)) {
-          matchedOptions.push({ text: inputOptions[i].text, value: inputOptions[i].value});
-          console.log(matchedOptions);       
+          matchedOptions.push({ text: inputOptions[i].text, value: inputOptions[i].value});            
         }  
       }
     }
-
-    this.valueContainer.addEventListener("keypress",checkOptions);
     
+    checkOptions(matchedOptions);
+
     return matchedOptions;
   }
 }
+
+
 
 new Autocomplete( document.querySelector( '.autocomplete' ));
