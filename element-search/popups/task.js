@@ -7,6 +7,6 @@ let showSuccess = document.getElementsByClassName('show-success');
 
 modalMain.classList.add("modal_active");
 
-showSuccess[0].addEventListener("click", function() { modalSuccess.classList.add("modal_active"); } );
+showSuccess[0].addEventListener("click", function() { modalSuccess.classList.add("modal_active"); modalMain.classList.remove("modal_active"); } );
 modalMainClose[0].addEventListener("click", function() { modalMain.classList.remove("modal_active"); } );
 modalSuccessClose[0].addEventListener("click", function() { modalSuccess.classList.remove("modal_active"); } );
