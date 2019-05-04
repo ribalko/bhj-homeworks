@@ -2,11 +2,11 @@ const taskInput = document.getElementById('task__input');
 const addButton = document.getElementById('tasks__add');
 const taskList = document.getElementById('tasks__list');
 
-taskInput.addEventListener('keypress', sendMsg);
-addButton.addEventListener('click', sendMsg);
+taskInput.addEventListener('keypress', addTask);
+addButton.addEventListener('click', addTask);
 addButton.addEventListener('keypress', function(e) {e.preventDefault();});
 
-function sendMsg(e) {
+function addTask(e) {
     const tb = taskInput;
     if ((this === taskInput) && (e.keyCode != 13)) {
         return;
@@ -19,15 +19,11 @@ function sendMsg(e) {
             tb.value
             + `
             </div>
-            <a href="#" class="task__remove" onclick="removeTask(this.closest('div.task'))">&times;</a>
+            <a href="#" class="task__remove" onclick="this.closest('.task').outerHTML = '';">&times;</a>
         </div>        
         `;       
         tb.value = '';
-        preventDefault();
+        e.preventDefault();
         return false;
     }
-}
-
-function removeTask(task) {
-    task.outerHTML = '';
 }
