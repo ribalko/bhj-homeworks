@@ -15,9 +15,7 @@ function addTask(e) {
         taskList.innerHTML += `
         <div class="task">
             <div class="task__title">
-            ` +
-            tb.value
-            + `
+                ${tb.value}
             </div>
             <a href="#" class="task__remove" onclick="this.closest('.task').outerHTML = '';">&times;</a>
         </div>        

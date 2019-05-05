@@ -25,9 +25,9 @@ function addToCart() {
     }
     else {
         cart.innerHTML += `
-        <div class="cart__product" data-id="` + data_id + `">
-            <img class="cart__product-image" src="` + currentImageSrc + `">
-            <div class="cart__product-count">` + currentQuantity + `</div>
+        <div class="cart__product" data-id="${data_id}">
+            <img class="cart__product-image" src="${currentImageSrc}">
+            <div class="cart__product-count">${currentQuantity}</div>
         </div>          
         `;
     }
