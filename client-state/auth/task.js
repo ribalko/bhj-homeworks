@@ -1,4 +1,5 @@
-let signinForm = document.getElementById('signin');
+let signinBlock = document.getElementById('signin');
+let signinForm = document.getElementById('signin__form');
 let welcome = document.getElementById('welcome');
 let signinButton = document.getElementById('signin__btn');
 let xhr = new XMLHttpRequest();
@@ -9,7 +10,7 @@ document.addEventListener("DOMContentLoaded", restoreLogin);
 
 function sayHello(user) {
     welcome.classList.add('welcome_active');
-    welcome.innerHTML = `Добро пожаловать, пользователь #<span id="${user}">${user}</span>`;
+    welcome.innerHTML = `Добро пожаловать, пользователь #<span id="${user}">${user}</span><br><br><button class="btn" id="logout__btn" onclick="localStorage.clear(); window.location.reload();">Выйти</button>`;
 }
 
 function restoreLogin() {
@@ -18,7 +19,7 @@ function restoreLogin() {
         sayHello(user_id);
     }
     else {
-        signinForm.classList.add('signin_active');
+        signinBlock.classList.add('signin_active');
     }
 }
 
@@ -42,11 +43,12 @@ function trySignin() {
         else {
             let authJSON = JSON.parse(xhr.responseText);
             if (authJSON.success) {
-                signinForm.classList.remove('signin_active');
+                signinBlock.classList.remove('signin_active');
                 sayHello(authJSON.user_id);
                 localStorage.setItem("user_id", authJSON.user_id);
             }
             else {
+                signinForm.reset();
                 alert('Неверный логин/пароль!');
             }
         }
